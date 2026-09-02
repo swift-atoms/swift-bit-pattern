@@ -1,0 +1,8 @@
+# .github/metadata.yaml
+description: "Fixed-width patterns of bits over unsigned carriers: masks, rank and select, and bit order for Swift."
+topics:
+  - atoms
+  - bit
+homepage: "https://swift-institute.org"
+readme:
+  family: E
