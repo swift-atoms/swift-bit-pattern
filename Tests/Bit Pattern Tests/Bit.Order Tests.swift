@@ -3,7 +3,7 @@ import Bit_Pattern
 import Testing
 
 @Suite
-struct `Bit Order Tests` {
+struct `Bit order distinguishes the least and most significant positions` {
 
     @Test
     func `msb and lsb are distinct`() {

@@ -3,12 +3,12 @@ import Bit_Pattern
 import Testing
 
 @Suite
-struct `Bit Pattern Zeros Tests` {
+struct `Clear bit views expose positions ranks and ordered traversal` {
 
     let sample: UInt8 = 0b1010_1100
 
     @Test
-    func `first and last clear bit`() {
+    func `Clear bit views identify the first and last unoccupied positions`() {
         #expect(Bit.Pattern<UInt8>.Zeros(sample).first == 0)
         #expect(Bit.Pattern<UInt8>.Zeros(sample).last == 6)
         #expect(Bit.Pattern<UInt8>.Zeros(.max).first == nil)

@@ -3,12 +3,12 @@ import Bit_Pattern
 import Testing
 
 @Suite
-struct `Bit Pattern Ones Tests` {
+struct `Set bit views expose positions ranks and ordered traversal` {
 
     let sample: UInt8 = 0b1010_1100
 
     @Test
-    func `first and last set bit`() {
+    func `Set bit views identify the first and last occupied positions`() {
         #expect(Bit.Pattern<UInt8>.Ones(sample).first == 2)
         #expect(Bit.Pattern<UInt8>.Ones(sample).last == 7)
         #expect(Bit.Pattern<UInt8>.Ones(0).first == nil)
@@ -43,7 +43,7 @@ struct `Bit Pattern Ones Tests` {
     }
 
     @Test
-    func `all-set and all-clear words`() {
+    func `Set bit views distinguish full and empty words`() {
         #expect(Bit.Pattern<UInt8>.Ones(.max).first == 0)
         #expect(Bit.Pattern<UInt8>.Ones(.max).last == 7)
         #expect(Bit.Pattern<UInt8>.Ones(.max).rank(below: 8) == 8)

@@ -3,7 +3,7 @@ import Bit_Pattern
 import Testing
 
 @Suite
-struct `Bit Pattern Mask Tests` {
+struct `Bit masks select positions and obey set operations` {
 
     @Test
     func `low and high bit masks select contiguous positions`() {
@@ -14,7 +14,7 @@ struct `Bit Pattern Mask Tests` {
     }
 
     @Test
-    func `single-position mask and containment`() {
+    func `Single position masks contain exactly their selected bit`() {
         let bit3 = Bit.Pattern<UInt8>.Mask.bit(3)
         #expect(bit3.underlying == 0b0000_1000)
         #expect(Bit.Pattern<UInt8>.Mask.lowBits(4).contains(bit3))
