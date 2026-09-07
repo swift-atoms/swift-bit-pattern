@@ -12,10 +12,10 @@ let package = Package(
         .visionOS(.v27),
     ],
     products: [
-        .library(
-            name: "Bit Pattern",
-            targets: ["Bit Pattern"]
-        ),
+        .library(name: "Bit Pattern", targets: ["Bit Pattern"]),
+        .library(name: "Bit Pattern Standard Library Integration", targets: ["Bit Pattern Standard Library Integration"]),
+        .library(name: "Bit Pattern Foundation Library Integration", targets: ["Bit Pattern Foundation Library Integration"]),
+        .library(name: "Bit Pattern Test Support", targets: ["Bit Pattern Test Support"]),
     ],
     dependencies: [
         .package(
@@ -27,21 +27,48 @@ let package = Package(
         .target(
             name: "Bit Pattern",
             dependencies: [
-                .product(name: "Bit", package: "swift-bit")
-            ]
+                .product(name: "Bit", package: "swift-bit"),
+            ],
+            path: "Sources/Bit Pattern"
+        ),
+        .target(
+            name: "Bit Pattern Standard Library Integration",
+            dependencies: [
+                .target(name: "Bit Pattern"),
+            ],
+            path: "Sources/Bit Pattern Standard Library Integration"
+        ),
+        .target(
+            name: "Bit Pattern Foundation Library Integration",
+            dependencies: [
+                .target(name: "Bit Pattern"),
+                .target(name: "Bit Pattern Standard Library Integration"),
+            ],
+            path: "Sources/Bit Pattern Foundation Library Integration"
+        ),
+        .target(
+            name: "Bit Pattern Test Support",
+            dependencies: [
+                .target(name: "Bit Pattern"),
+            ],
+            path: "Tests/Support"
         ),
         .testTarget(
             name: "Bit Pattern Tests",
             dependencies: [
-                .target(name: "Bit Pattern")
-            ]
+                .target(name: "Bit Pattern"),
+                .target(name: "Bit Pattern Test Support"),
+                .target(name: "Bit Pattern Standard Library Integration"),
+                .target(name: "Bit Pattern Foundation Library Integration"),
+            ],
+            path: "Tests/Bit Pattern Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    let ecosystem: [SwiftSetting] = [
+for target in package.targets {
+    target.swiftSettings = [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),
         .enableUpcomingFeature("InternalImportsByDefault"),
@@ -50,8 +77,4 @@ for target in package.targets where ![.system, .binary, .plugin, .macro].contain
         .enableExperimentalFeature("Lifetimes"),
         .enableUpcomingFeature("InferIsolatedConformances"),
     ]
-
-    let package: [SwiftSetting] = []
-
-    target.swiftSettings = (target.swiftSettings ?? []) + ecosystem + package
 }
