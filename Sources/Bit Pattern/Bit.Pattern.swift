@@ -84,10 +84,3 @@ extension Bit.Pattern.Mask {
         underlying == 0
     }
 }
-
-extension Bit.Pattern.Mask: CustomStringConvertible {
-
-    public var description: String {
-        "0x" + String(underlying, radix: 16, uppercase: true)
-    }
-}

@@ -25,8 +25,3 @@ extension Bit.Order {
         Self.opposite(self)
     }
 }
-
-extension Bit.Order: CaseIterable {
-
-    public static var allCases: [Bit.Order] { [.msb, .lsb] }
-}
