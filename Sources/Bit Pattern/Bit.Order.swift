@@ -2,7 +2,7 @@ public import Bit
 
 extension Bit {
 
-    public enum Order: Hashable {
+    public enum Order: Hashable, Swift.Sendable {
 
         case msb
 
