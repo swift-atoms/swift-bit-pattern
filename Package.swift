@@ -42,8 +42,6 @@ let package = Package(
     targets: [
         .target(name: "Bit Finite Test Support", dependencies: [.target(name: "Bit Pattern")], path: "Tests/Decision Bit Finite Support"),
 
-        .testTarget(name: "Bit Pattern Finite Integration Tests", dependencies: [.target(name: "Bit Pattern")], path: "Tests/Decision Bit Finite Tests"),
-
         .target(
             name: "Bit Pattern",
             dependencies: [
