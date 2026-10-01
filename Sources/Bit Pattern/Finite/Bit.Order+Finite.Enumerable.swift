@@ -2,9 +2,9 @@
 public import Bit
 public import Cardinal
 public import Finite
-public import Index
+import Index
 public import Ordinal
-public import Tagged
+import Tagged
 
 extension Bit.Order: Finite.Enumerable {
 
