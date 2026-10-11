@@ -1,6 +1,6 @@
 public import Bit
 
-extension Swift.FixedWidthInteger {
+extension Swift::FixedWidthInteger {
 
     @inlinable
     public func rotatedLeft(by count: Int) -> Self {

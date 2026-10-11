@@ -31,7 +31,7 @@ extension Bit.Pattern.Zeros {
     @inlinable
     public func rank(below position: Int) -> Int {
         guard position > 0 else { return 0 }
-        let bound = Swift.min(position, Carrier.bitWidth)
+        let bound = Swift::min(position, Carrier.bitWidth)
         return bound - Bit.Pattern<Carrier>.Ones(word).rank(below: bound)
     }
 }
