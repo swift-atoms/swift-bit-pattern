@@ -16,11 +16,14 @@ let package = Package(
 
         .library(name: "Bit Pattern", targets: ["Bit Pattern"]),
 
-        .library(name: "Bit Pattern Foundation Integration", targets: ["Bit Pattern Foundation Integration"]),
+        .library(
+            name: "Bit Pattern Foundation Integration",
+            targets: ["Bit Pattern Foundation Integration"]
+        ),
         .library(name: "Bit Pattern Test Support", targets: ["Bit Pattern Test Support"]),
     ],
     traits: [
-        .trait(name: "Finite", description: "Finite integration"),
+        .trait(name: "Finite", description: "Finite integration")
 
     ],
     dependencies: [
@@ -40,37 +43,61 @@ let package = Package(
         ),
     ],
     targets: [
-        .target(name: "Bit Finite Test Support", dependencies: [.target(name: "Bit Pattern")], path: "Tests/Decision Bit Finite Support"),
+        .target(
+            name: "Bit Finite Test Support",
+            dependencies: [.target(name: "Bit Pattern")],
+            path: "Tests/Decision Bit Finite Support"
+        ),
 
         .target(
             name: "Bit Pattern",
             dependencies: [
-                .product(name: "Tagged", package: "swift-tagged", condition: .when(traits: ["Finite"])),
+                .product(
+                    name: "Tagged",
+                    package: "swift-tagged",
+                    condition: .when(traits: ["Finite"])
+                ),
 
-                .product(name: "Ordinal", package: "swift-ordinal", condition: .when(traits: ["Finite"])),
+                .product(
+                    name: "Ordinal",
+                    package: "swift-ordinal",
+                    condition: .when(traits: ["Finite"])
+                ),
 
-                .product(name: "Index", package: "swift-index", condition: .when(traits: ["Finite"])),
+                .product(
+                    name: "Index",
+                    package: "swift-index",
+                    condition: .when(traits: ["Finite"])
+                ),
 
-                .product(name: "Cardinal", package: "swift-cardinal", condition: .when(traits: ["Finite"])),
+                .product(
+                    name: "Cardinal",
+                    package: "swift-cardinal",
+                    condition: .when(traits: ["Finite"])
+                ),
 
-                .product(name: "Finite", package: "swift-finite", condition: .when(traits: ["Finite"])),
+                .product(
+                    name: "Finite",
+                    package: "swift-finite",
+                    condition: .when(traits: ["Finite"])
+                ),
 
                 .product(name: "Bit", package: "swift-bit"),
             ],
             path: "Sources/Bit Pattern"
         ),
-        
+
         .target(
             name: "Bit Pattern Foundation Integration",
             dependencies: [
-                .target(name: "Bit Pattern"),
+                .target(name: "Bit Pattern")
             ],
             path: "Sources/Bit Pattern Foundation Integration"
         ),
         .target(
             name: "Bit Pattern Test Support",
             dependencies: [
-                .target(name: "Bit Pattern"),
+                .target(name: "Bit Pattern")
             ],
             path: "Tests/Support"
         ),
@@ -87,14 +114,15 @@ let package = Package(
 )
 
 for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
-    target.swiftSettings = (target.swiftSettings ?? []) + [
-        .strictMemorySafety(),
-        .enableUpcomingFeature("ExistentialAny"),
-        .enableUpcomingFeature("InternalImportsByDefault"),
-        .enableUpcomingFeature("MemberImportVisibility"),
-        .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
-        .enableUpcomingFeature("InferIsolatedConformances"),
-        .enableExperimentalFeature("Lifetimes"),
-        .treatAllWarnings(as: .error),
-    ]
+    target.swiftSettings =
+        (target.swiftSettings ?? []) + [
+            .strictMemorySafety(),
+            .enableUpcomingFeature("ExistentialAny"),
+            .enableUpcomingFeature("InternalImportsByDefault"),
+            .enableUpcomingFeature("MemberImportVisibility"),
+            .enableUpcomingFeature("NonisolatedNonsendingByDefault"),
+            .enableUpcomingFeature("InferIsolatedConformances"),
+            .enableExperimentalFeature("Lifetimes"),
+            .treatAllWarnings(as: .error),
+        ]
 }

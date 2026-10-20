@@ -2,7 +2,6 @@ public import Bit
 
 extension Bit.Pattern {
 
-
     @inlinable
     public static func rotatedLeft(_ word: Carrier, by count: Int) -> Carrier {
         let remainder = count % Carrier.bitWidth

@@ -1,6 +1,5 @@
-import Testing
-
 import Bit_Pattern
+import Testing
 
 @Suite
 struct `Bit rotation preserves every bit` {
@@ -33,7 +32,9 @@ extension `Bit rotation preserves every bit`.`Bit rotations wrap positions and i
     }
 }
 
-extension `Bit rotation preserves every bit`.`Bit rotation normalizes counts and preserves signed bit patterns` {
+extension `Bit rotation preserves every bit`
+    .`Bit rotation normalizes counts and preserves signed bit patterns`
+{
     @Test
     func `Rotation by zero preserves the original bit pattern`() {
         let value: UInt8 = 0b1100_0011
