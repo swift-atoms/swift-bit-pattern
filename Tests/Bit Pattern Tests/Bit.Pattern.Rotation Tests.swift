@@ -1,15 +1,25 @@
 import Bit_Pattern
 import Testing
 
-@Suite
-struct `Bit rotation preserves every bit` {
+enum `Bit.Pattern.Rotation Tests` {}
+
+extension `Bit.Pattern.Rotation Tests` {
+    @Suite
+    struct `Bit rotation preserves every bit` {
+    }
+}
+
+extension `Bit.Pattern.Rotation Tests`.`Bit rotation preserves every bit` {
     @Suite struct `Bit rotations wrap positions and invert each other` {}
+
     @Suite struct `Bit rotation normalizes counts and preserves signed bit patterns` {}
+
     @Suite struct `No bit rotation integration cases are defined` {}
+
     @Suite(.serialized) struct `No bit rotation performance cases are defined` {}
 }
 
-extension `Bit rotation preserves every bit`.`Bit rotations wrap positions and invert each other` {
+extension `Bit.Pattern.Rotation Tests`.`Bit rotation preserves every bit`.`Bit rotations wrap positions and invert each other` {
     @Test
     func `Right rotation wraps the lowest two bits to the highest positions`() {
         let value: UInt8 = 0b1100_0011
@@ -32,7 +42,7 @@ extension `Bit rotation preserves every bit`.`Bit rotations wrap positions and i
     }
 }
 
-extension `Bit rotation preserves every bit`
+extension `Bit.Pattern.Rotation Tests`.`Bit rotation preserves every bit`
     .`Bit rotation normalizes counts and preserves signed bit patterns`
 {
     @Test
