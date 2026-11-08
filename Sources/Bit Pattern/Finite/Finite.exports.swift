@@ -1,8 +1,8 @@
 #if Finite
-    public import Bit
-    public import Cardinal
-    public import Finite
-    public import Index
-    public import Ordinal
-    public import Tagged
+    import Bit
+    import Cardinal
+    import Finite
+    import Index
+    import Ordinal
+    import Tagged
 #endif
